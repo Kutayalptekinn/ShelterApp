@@ -10,8 +10,11 @@ using ShelterApp.UI.Shared;
 using Syncfusion.Blazor;
 using System.Globalization;
 using Newtonsoft.Json.Serialization;
+using ShelterApp.Business.Services.BlogService;
 
 var builder = WebApplication.CreateBuilder(args);
+ConfigureBusiness(builder);
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -24,11 +27,10 @@ builder.Services.AddBlazoredToast();
 builder.Services.AddSingleton(typeof(ISyncfusionStringLocalizer), typeof(SyncfusionLocalizer));
 builder.Services.AddControllers();
 
-builder.Services.AddDbContextFactory<ShelterAppDbContext>(
-        options =>
-            options.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=ShelterAppDB;"), ServiceLifetime.Transient);
+//builder.Services.AddDbContextFactory<ShelterAppDbContext>(
+//        options =>
+//            options.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=ShelterAppDB;"), ServiceLifetime.Transient);
 
-ConfigureBusiness(builder);
 
 var app = builder.Build();
 app.UseRequestLocalization("tr-TR");
