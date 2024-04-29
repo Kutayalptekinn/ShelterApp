@@ -7,6 +7,8 @@ using ShelterApp.Core.Utilities.MapperUtilities.Extensions;
 using ShelterApp.Business.Services.BlogService;
 using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Blog;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
 
 namespace ShelterApp.Business
 {
@@ -14,6 +16,13 @@ namespace ShelterApp.Business
     {
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors(options => options.AddPolicy("AllowLocalhost", builder =>
+            {
+                builder.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+            }));
+
+            services.AddMvc();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());

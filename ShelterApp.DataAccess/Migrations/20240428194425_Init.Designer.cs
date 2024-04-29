@@ -12,8 +12,8 @@ using ShelterApp.DataAccess.EntitiyFrameworkCore;
 namespace ShelterApp.DataAccess.Migrations
 {
     [DbContext(typeof(ShelterAppDbContext))]
-    [Migration("20240407180440_PropertiesChanged")]
-    partial class PropertiesChanged
+    [Migration("20240428194425_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,8 +36,7 @@ namespace ShelterApp.DataAccess.Migrations
 
                     b.Property<string>("Baslik")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("NVarChar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Foto")
                         .IsRequired()
@@ -45,21 +44,18 @@ namespace ShelterApp.DataAccess.Migrations
 
                     b.Property<string>("Icerik")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("NVarChar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Konu")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("NVarChar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Tarih")
                         .HasColumnType("DateTime");
 
                     b.Property<string>("Yazar")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("NVarChar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 

@@ -41,7 +41,7 @@ namespace ShelterApp.Business.Services.BlogService
 
         public async Task<IList<ListBlogDto>> GetListAsync()
         {
-            var list = await _repository.GetListAsync(null);
+            var list = await _repository.GetListAsync();
 
             var mappedEntity = ObjectMapper.Map<List<TBL_Blog>, List<ListBlogDto>>(list.ToList());
 

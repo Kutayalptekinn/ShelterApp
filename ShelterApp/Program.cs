@@ -27,9 +27,9 @@ builder.Services.AddBlazoredToast();
 builder.Services.AddSingleton(typeof(ISyncfusionStringLocalizer), typeof(SyncfusionLocalizer));
 builder.Services.AddControllers();
 
-//builder.Services.AddDbContextFactory<ShelterAppDbContext>(
-//        options =>
-//            options.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=ShelterAppDB;"), ServiceLifetime.Transient);
+builder.Services.AddDbContextFactory<ShelterAppDbContext>(
+        options =>
+            options.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=ShelterAppDB;"), ServiceLifetime.Transient);
 
 
 var app = builder.Build();

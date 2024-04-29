@@ -19,11 +19,11 @@ namespace ShelterApp.DataAccess.EntitiyFrameworkCore.Configurations
                 b.ToTable("TBL_Blog");
                 b.ConfigureByConvention();
 
-                b.Property(t => t.Konu).IsRequired().HasColumnType(SqlDbType.NVarChar.ToString()).HasMaxLength(250);
-                b.Property(t => t.Baslik).IsRequired().HasColumnType(SqlDbType.NVarChar.ToString()).HasMaxLength(250);
-                b.Property(t => t.Icerik).IsRequired().HasColumnType(SqlDbType.NVarChar.ToString()).HasMaxLength(250);
+                b.Property(t => t.Konu).IsRequired().HasColumnType("nvarchar(max)");
+                b.Property(t => t.Baslik).IsRequired().HasColumnType("nvarchar(max)");
+                b.Property(t => t.Icerik).IsRequired().HasColumnType("nvarchar(max)");
                 b.Property(t => t.Tarih).HasColumnType(SqlDbType.DateTime.ToString());
-                b.Property(t => t.Yazar).IsRequired().HasColumnType(SqlDbType.NVarChar.ToString()).HasMaxLength(250);
+                b.Property(t => t.Yazar).IsRequired().HasColumnType("nvarchar(max)");
                 b.Property(t => t.Foto).HasColumnType("varbinary(max)");
 
             });

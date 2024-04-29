@@ -33,8 +33,7 @@ namespace ShelterApp.DataAccess.Migrations
 
                     b.Property<string>("Baslik")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("NVarChar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Foto")
                         .IsRequired()
@@ -42,21 +41,18 @@ namespace ShelterApp.DataAccess.Migrations
 
                     b.Property<string>("Icerik")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("NVarChar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Konu")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("NVarChar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Tarih")
                         .HasColumnType("DateTime");
 
                     b.Property<string>("Yazar")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("NVarChar");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 

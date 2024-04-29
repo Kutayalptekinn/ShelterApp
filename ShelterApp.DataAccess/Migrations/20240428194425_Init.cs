@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ShelterApp.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class PropertiesChanged : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,11 +17,11 @@ namespace ShelterApp.DataAccess.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Baslik = table.Column<string>(type: "NVarChar(250)", maxLength: 250, nullable: false),
-                    Konu = table.Column<string>(type: "NVarChar(250)", maxLength: 250, nullable: false),
-                    Icerik = table.Column<string>(type: "NVarChar(250)", maxLength: 250, nullable: false),
+                    Baslik = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Konu = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Icerik = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Foto = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    Yazar = table.Column<string>(type: "NVarChar(250)", maxLength: 250, nullable: false),
+                    Yazar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Tarih = table.Column<DateTime>(type: "DateTime", nullable: false)
                 },
                 constraints: table =>
