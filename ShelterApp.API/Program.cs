@@ -3,12 +3,28 @@ using ShelterApp.DataAccess.EntitiyFrameworkCore;
 using System.Reflection;
 using ShelterApp.Core.Utilities.Services.Business.ServiceRegistrations;
 using System.Data.Entity.Core.Common.CommandTrees;
-
+//const string corsPolicyName = "ApiCORS";
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(corsPolicyName, policy =>
+    {
+        policy.WithOrigins("https://localhost:5173").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 
+    });
+
+});
 // Add services to the container.
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy(corsPolicyName, policy =>
+//    {
+//        policy.WithOrigins("https://localhost:5173").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 
+//    });
+
+//});
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -29,14 +45,6 @@ app.UseSwaggerUI(c => {
     c.RoutePrefix = string.Empty;
 });
 // Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI(c =>
-//    {
-//        c.SwaggerEndpoint("//swagger/v1/swagger.json", "Employee API V1");
-//    });
-//}
 
 app.UseCors("AllowLocalhost");
 app.UseHttpsRedirection();

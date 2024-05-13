@@ -1,6 +1,6 @@
 @ShelterApp.API_HostAddress = http://localhost:5062
 
-GET {{ShelterApp.API_HostAddress}}/weatherforecast/
+# GET {{ShelterApp.API_HostAddress}}/weatherforecast/
 Accept: application/json
 
 

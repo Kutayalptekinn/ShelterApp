@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ShelterApp.DataAccess.EntitiyFrameworkCore.Configurations;
 using ShelterApp.Entities.Entities.Blog;
+using ShelterApp.Entities.Entities.Product;
+using ShelterApp.Entities.Entities.Sector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +47,11 @@ namespace ShelterApp.DataAccess.EntitiyFrameworkCore
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ConfigureBlog();
+            builder.ConfigureProduct();
+            builder.ConfigureService();
          }
         public DbSet<TBL_Blog> TBL_Bloglar { get; set; }
+        public DbSet<TBL_Product> TBL_Products { get; set; }
+        public DbSet<TBL_Service> TBL_Services { get; set; }
     }
 }

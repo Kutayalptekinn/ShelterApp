@@ -9,6 +9,10 @@ using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Blog;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
+using ShelterApp.Business.Services.ProductService;
+using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Product;
+using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Service;
+using ShelterApp.Business.Services.ServiceService;
 
 namespace ShelterApp.Business
 {
@@ -28,8 +32,12 @@ namespace ShelterApp.Business
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             SetMapperToObjectMapper();
+            services.AddScoped<IProductAppService, ProductAppService>(); 
             services.AddScoped<IBlogAppService, BlogAppService>(); 
+            services.AddScoped<IServiceAppService, ServiceAppService>(); 
             services.AddScoped<IBlogRepository, EFCoreBlogRepository>();
+            services.AddScoped<IServiceRepository, EFCoreServiceRepository>();
+            services.AddScoped<IProductRepository, EFCoreProductRepository>();
 
         }
         static void SetMapperToObjectMapper()

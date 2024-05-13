@@ -11,6 +11,7 @@ using Syncfusion.Blazor;
 using System.Globalization;
 using Newtonsoft.Json.Serialization;
 using ShelterApp.Business.Services.BlogService;
+using DevExpress.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigureBusiness(builder);
@@ -23,6 +24,8 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSyncfusionBlazor();
 builder.Services.AddDevExpressBlazor();
 //builder.Services.AddBlazoredModal();
+//builder.Services.AddDevExpressBlazor(configure => configure.BootstrapVersion = BootstrapVersion.v5);
+
 builder.Services.AddBlazoredToast();
 builder.Services.AddSingleton(typeof(ISyncfusionStringLocalizer), typeof(SyncfusionLocalizer));
 builder.Services.AddControllers();
