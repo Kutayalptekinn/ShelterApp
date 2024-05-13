@@ -6,15 +6,15 @@ using System.Data.Entity.Core.Common.CommandTrees;
 //const string corsPolicyName = "ApiCORS";
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(corsPolicyName, policy =>
-    {
-        policy.WithOrigins("https://localhost:5173").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy(corsPolicyName, policy =>
+//    {
+//        policy.WithOrigins("https://localhost:5173").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 
-    });
+//    });
 
-});
+//});
 // Add services to the container.
 //builder.Services.AddCors(options =>
 //{

@@ -66,7 +66,15 @@ else
                                     <GridColumn Field=@nameof(ListBlogDto.Konu) HeaderText="Konu" TextAlign="TextAlign.Left" Width="120"></GridColumn>
                                     <GridColumn Field=@nameof(ListBlogDto.Icerik) HeaderText="İçerik" TextAlign="TextAlign.Left" Width="120"></GridColumn>
                                     <GridColumn Field=@nameof(ListBlogDto.Yazar) HeaderText="Yazar" TextAlign="TextAlign.Left" Width="120"></GridColumn>
-                                    <GridColumn Field=@nameof(ListBlogDto.Tarih) HeaderText="Tarih" TextAlign="TextAlign.Left" Width="120"></GridColumn>
+                                    <GridColumn Field=@nameof(ListBlogDto.Tarih) HeaderText="Tarih" TextAlign="TextAlign.Left" Width="120">
+                                        <Template Context="cntxt">
+                                            @{
+                                                var contxt = (cntxt as ListBlogDto);
+                                                var siraNo = (contxt.Tarih.ToString("dd.MM.yyyy"));
+                                            }
+                                            @siraNo
+                                        </Template>
+                                    </GridColumn>
                                     <GridColumn Field=@nameof(ListBlogDto.Foto) HeaderText="Resim" TextAlign="TextAlign.Left" Width="120">
                                         <Template>
                                             @{

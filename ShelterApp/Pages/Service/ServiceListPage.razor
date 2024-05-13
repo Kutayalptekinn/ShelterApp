@@ -1,5 +1,5 @@
 ﻿@layout MainLayout
-@page "/Service"
+@page "/service"
 @using ShelterApp.Business.Services.ServiceService
 @using ShelterApp.Components
 @using ShelterApp.Components.Commons.Loadings
@@ -138,14 +138,14 @@ else
                     <DxGridLayoutItem Row="0" Column="1">
                         <Template>
                             <br />
-                            <label class="TSIModalLabel"><strong>Başlık</strong></label><br />
+                            <label class="TSIModalLabel"><strong>Resim Yazısı</strong></label><br />
                             <SfTextBox CssClass=" " @bind-Value="DataSource.TextInPicture"></SfTextBox>
                         </Template>
                     </DxGridLayoutItem>
                     <DxGridLayoutItem Row="1" Column="1">
                         <Template>
                             <br />
-                            <label class="TSIModalLabel"><strong>Başlık</strong></label><br />
+                            <label class="TSIModalLabel"><strong>İçerik</strong></label><br />
                             <SfTextBox CssClass=" " @bind-Value="DataSource.ContentText"></SfTextBox>
                         </Template>
                     </DxGridLayoutItem> 
@@ -153,14 +153,14 @@ else
                     <DxGridLayoutItem Row="2" Column="1">
                         <Template>
                             <br />
-                            <label class="TSIModalLabel"><strong>Başlık</strong></label><br />
+                            <label class="TSIModalLabel"><strong>Hizmet İsmi</strong></label><br />
                             <SfTextBox CssClass=" " @bind-Value="DataSource.ServiceName"></SfTextBox>
                         </Template>
                     </DxGridLayoutItem>
                     <DxGridLayoutItem Row="3" Column="1">
                         <Template>
                             <br />
-                            <label class="TSIModalLabel"><strong>Başlık</strong></label><br />
+                            <label class="TSIModalLabel"><strong>Başlık Yazısı</strong></label><br />
                             <SfTextBox CssClass=" " @bind-Value="DataSource.HeaderText"></SfTextBox>
                         </Template>
                     </DxGridLayoutItem>

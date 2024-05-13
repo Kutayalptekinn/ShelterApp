@@ -1,5 +1,5 @@
 ﻿@layout MainLayout
-@page "/Product"
+@page "/product"
 @using ShelterApp.Business.Services.ProductService
 @using ShelterApp.Components
 @using ShelterApp.Components.Commons.Loadings
@@ -109,18 +109,16 @@ else
          ShowFooter="true"
          CloseOnEscape="false"
          CloseOnOutsideClick="false"
-         HeaderText="Product Listesi"
+         HeaderText="Ürün Listesi"
          HeaderCssClass="HeaderTitleCss">
 
         <BodyTemplate>
             <DxGridLayout CssClass="TSIGridLayout">
 
                 <Rows>
-                    <DxGridLayoutRow Height="20%" />
-                    <DxGridLayoutRow Height="20%" />
-                    <DxGridLayoutRow Height="20%" />
-                    <DxGridLayoutRow Height="20%" />
-                    <DxGridLayoutRow Height="20%" />
+                    <DxGridLayoutRow Height="30%" />
+                    <DxGridLayoutRow Height="40%" />
+                    <DxGridLayoutRow Height="30%" />
                 </Rows>
 
                 <Columns>
@@ -142,7 +140,7 @@ else
                      
                  
 
-                     <DxGridLayoutItem Row="0" Column="3" ColumnSpan="2">
+                     <DxGridLayoutItem Row="0" Column="3" >
                         <Template>
                             @{
                                 var imgBase = DataSource.Foto;
