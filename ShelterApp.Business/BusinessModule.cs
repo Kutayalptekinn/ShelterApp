@@ -13,6 +13,7 @@ using ShelterApp.Business.Services.ProductService;
 using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Product;
 using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Service;
 using ShelterApp.Business.Services.ServiceService;
+using ShelterApp.Business.Services.MailService;
 
 namespace ShelterApp.Business
 {
@@ -38,7 +39,7 @@ namespace ShelterApp.Business
             services.AddScoped<IBlogRepository, EFCoreBlogRepository>();
             services.AddScoped<IServiceRepository, EFCoreServiceRepository>();
             services.AddScoped<IProductRepository, EFCoreProductRepository>();
-
+            services.AddTransient<IEmailSender, EmailSender>();
         }
         static void SetMapperToObjectMapper()
         {
