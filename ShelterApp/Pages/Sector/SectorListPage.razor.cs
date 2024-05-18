@@ -66,6 +66,22 @@ namespace ShelterApp.Pages.Sector
                 }
             }
         }
+        private async Task UploadFiles4(InputFileChangeEventArgs e)
+        {
+            var file = e.File;
+
+            if (file != null)
+            {
+                Stream stream = e.File.OpenReadStream();
+
+                using (var ms = new MemoryStream())
+                {
+                    await stream.CopyToAsync(ms);
+                    DataSource.FrontPhoto = ms.ToArray();
+                    await InvokeAsync(() => StateHasChanged());
+                }
+            }
+        }
     }
 }
 

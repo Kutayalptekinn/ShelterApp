@@ -56,6 +56,7 @@ namespace ShelterApp.DataAccess.EntitiyFrameworkCore.Configurations
                 b.Property(t => t.TextInPicture).IsRequired().HasColumnType("nvarchar(max)");
                 b.Property(t => t.SectorName).IsRequired().HasColumnType("nvarchar(max)");
               
+                b.Property(t => t.FrontPhoto).HasColumnType("varbinary(max)");
                 b.Property(t => t.Photo1).HasColumnType("varbinary(max)");
                 b.Property(t => t.Photo2).HasColumnType("varbinary(max)");
                 b.Property(t => t.Photo3).HasColumnType("varbinary(max)");

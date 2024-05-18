@@ -13,6 +13,7 @@ namespace ShelterApp.Entities.Entities.Sector
         public string TextInPicture { get; set; }
         public string HeaderText { get; set; }
         public string ContentText { get; set; }
+        public byte[] FrontPhoto { get; set; }
         public byte[] Photo1 { get; set; }
         public byte[] Photo2 { get; set; }
         public byte[] Photo3 { get; set; }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShelterApp.DataAccess.EntitiyFrameworkCore;
 
@@ -11,9 +12,11 @@ using ShelterApp.DataAccess.EntitiyFrameworkCore;
 namespace ShelterApp.DataAccess.Migrations
 {
     [DbContext(typeof(ShelterAppDbContext))]
-    partial class ShelterAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240518212330_ServiceDivided")]
+    partial class ServiceDivided
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,10 +122,6 @@ namespace ShelterApp.DataAccess.Migrations
                     b.Property<string>("ContentText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("FrontPhoto")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("HeaderText")
                         .IsRequired()
