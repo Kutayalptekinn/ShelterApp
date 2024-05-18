@@ -1,27 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ShelterApp.Business.Services.BlogService;
-using ShelterApp.Entities.Entities.Blog.dtos;
+﻿
+using Microsoft.AspNetCore.Mvc;
+using ShelterApp.Business.Services.PrivilegeService;
+using ShelterApp.Entities.Entities.Privilege.dtos;
 
-namespace ShelterApp.Controllers
+namespace ShelterApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BlogController : Controller
+    public class PrivilegeController : ControllerBase
     {
-        private IBlogAppService _appService;
+        private IPrivilegeAppService _appService;
 
-        public BlogController(IBlogAppService appService)
+        public PrivilegeController(IPrivilegeAppService appService)
         {
             _appService = appService;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+
         [HttpGet("GetListAsync")]
         public async Task<IActionResult> GetList()
         {
-            var result = (await _appService.GetListAsync()).ToList();
+            var result = ((await _appService.GetListAsync())).ToList();
 
             if (result.Count > 0)
             {
@@ -45,9 +43,9 @@ namespace ShelterApp.Controllers
         }
 
         [HttpPost("InsertAsync")]
-        public async Task<IActionResult> Insert(CreateBlogDto blog)
+        public async Task<IActionResult> Insert(CreatePrivilegeDto branch)
         {
-            var result = (await _appService.CreateAsync(blog));
+            var result = (await _appService.CreateAsync(branch));
 
             if (result.ID > 0)
             {
@@ -58,9 +56,9 @@ namespace ShelterApp.Controllers
         }
 
         [HttpPut("UpdateAsync")]
-        public async Task<IActionResult> Update(UpdateBlogDto blog)
+        public async Task<IActionResult> Update(UpdatePrivilegeDto branch)
         {
-            var result = (await _appService.UpdateAsync(blog));
+            var result = (await _appService.UpdateAsync(branch));
 
             if (result.ID > 0)
             {

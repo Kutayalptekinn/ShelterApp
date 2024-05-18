@@ -1,18 +1,19 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
-using ShelterApp.Entities.Entities.Service.dtos;
+using ShelterApp.Business.Services.PrivilegeService;
+using ShelterApp.Entities.Entities.Privilege.dtos;
 
-namespace ShelterApp.Pages.Service
+namespace ShelterApp.Pages.Privilege
 {
-    public partial class ServiceListPage
+    public partial class PrivilegeListPage
     {
         protected override async void OnInitialized()
         {
             
-            BaseCrudService = ServiceAppService;
+            BaseCrudService = PrivilegeAppService;
         }
         protected override async Task BeforeInsertAsync()
         {
-            DataSource = new SelectServiceDto();
+            DataSource = new SelectPrivilegeDto();
             EditPageVisible = true;
 
             await Task.CompletedTask;
@@ -28,18 +29,12 @@ namespace ShelterApp.Pages.Service
                 using (var ms = new MemoryStream())
                 {
                     await stream.CopyToAsync(ms);
-                    DataSource.Foto = ms.ToArray();
+                    DataSource.Photo = ms.ToArray();
                     await InvokeAsync(() => StateHasChanged());
                 }
-                //// Dosyanın Base64'e dönüştürülmesi
-                //var buffer = new byte[file.Size];
-                //await file.OpenReadStream().ReadAsync(buffer);
-                //var base64 = Convert.ToBase64String(buffer);
-
-                //// Base64 dizesinin DataSource.Resim özelliğine atanması
-                //DataSource.Foto = Convert.FromBase64String(base64);
             }
         }
+
     }
 }
 

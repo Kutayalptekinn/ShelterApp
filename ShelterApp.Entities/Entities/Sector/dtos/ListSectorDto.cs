@@ -5,14 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShelterApp.Entities.Entities.Service.dtos
+namespace ShelterApp.Entities.Entities.Sector.dtos
 {
-    public class CreateServiceDto: FullEntityDto
+    public class ListSectorDto : FullEntityDto
     {
-        public string ServiceName { get; set; }
+        public string SectorName { get; set; }
         public string TextInPicture { get; set; }
         public string HeaderText { get; set; }
         public string ContentText { get; set; }
-        public byte[] Foto { get; set; }
+        public byte[] Photo1 { get; set; }
+        public byte[] Photo2 { get; set; }
+        public byte[] Photo3 { get; set; }
     }
 }

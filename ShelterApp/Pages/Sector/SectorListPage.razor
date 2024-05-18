@@ -1,16 +1,16 @@
 ﻿@layout MainLayout
-@page "/service"
-@using ShelterApp.Business.Services.ServiceService
+@page "/sector"
+@using ShelterApp.Business.Services.SectorService
 @using ShelterApp.Components
 @using ShelterApp.Components.Commons.Loadings
 @using ShelterApp.Components.Layouts
-@using ShelterApp.Entities.Entities.Service.dtos
+@using ShelterApp.Entities.Entities.Sector.dtos
 @using ShelterApp.UI.Pages.Base
 
 
-@inherits BaseListPage<SelectServiceDto, ListServiceDto, CreateServiceDto, UpdateServiceDto>
+@inherits BaseListPage<SelectSectorDto, ListSectorDto, CreateSectorDto, UpdateSectorDto>
 
-@inject IServiceAppService ServiceAppService
+@inject ISectorAppService SectorAppService
 @inject NavigationManager NavigationManager
 
 
@@ -22,17 +22,6 @@ else
 {
     <DevGridLayout ColumnCount="1" RowCount="3" >
         <GridLayoutItems>
-@*             <DxGridLayoutItem Row="0" Column="0" ColumnSpan="1">
-                <Template>
-                    <SfCard class="TSIListPageTitleCard">
-                        <CardContent>
-                            <BreadCrumb PreviousMenus="Service" CurrentMenu="Service Listesi" />
-                        </CardContent>
-                        <CardFooter>
-                        </CardFooter>
-                    </SfCard>
-                </Template>
-            </DxGridLayoutItem> *@
             <DxGridLayoutItem Row="2" Column="0" ColumnSpan="1">
                 <Template>
                     <SfCard class="TSIGridCards">
@@ -40,7 +29,7 @@ else
                         <CardContent>
                             <SfGrid ID="Grid" @ref="_grid" AllowPdfExport=true ColumnMenuItems=@MenuItems ShowColumnMenu="true" DataSource="@ListDataSource" AllowPaging="@AllowGridPaging" AllowFiltering="true" AllowReordering="true" AllowResizing="true" AllowGrouping="true" AllowExcelExport="true" ShowColumnChooser="true" GridLines="GridLine.Both" AllowSelection="true" AllowSorting="true" Height="100%" Width="100%" class="GridZebra" Toolbar=@GridToolbarItems>
 
-                                <GridEvents OnToolbarClick="@ToolbarClickHandler" TValue="ListServiceDto"></GridEvents>
+                                <GridEvents OnToolbarClick="@ToolbarClickHandler" TValue="ListSectorDto"></GridEvents>
 
                                 <GridGroupSettings ShowGroupedColumn="true"></GridGroupSettings>
 
@@ -56,21 +45,21 @@ else
                                     <GridColumn HeaderText="Sıra No" TextAlign="TextAlign.Left" Width="120">
                                         <Template Context="cntxt">
                                             @{
-                                                var contxt = (cntxt as ListServiceDto);
+                                                var contxt = (cntxt as ListSectorDto);
                                                 var siraNo = ((ListDataSource.IndexOf(contxt) + 1).ToString());
                                             }
                                             @siraNo
                                         </Template>
                                     </GridColumn>
-                                    <GridColumn Field=@nameof(ListServiceDto.TextInPicture) HeaderText="Resim Yazısı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
-                                    <GridColumn Field=@nameof(ListServiceDto.ServiceName) HeaderText="Hizmet Adı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
-                                    <GridColumn Field=@nameof(ListServiceDto.HeaderText) HeaderText="Başlık Yazısı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
-                                    <GridColumn Field=@nameof(ListServiceDto.ContentText) HeaderText="İçerik Yazısı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
+                                    <GridColumn Field=@nameof(ListSectorDto.TextInPicture) HeaderText="Resim Yazısı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
+                                    <GridColumn Field=@nameof(ListSectorDto.SectorName) HeaderText="Sektör Adı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
+                                    <GridColumn Field=@nameof(ListSectorDto.HeaderText) HeaderText="Başlık Yazısı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
+                                    <GridColumn Field=@nameof(ListSectorDto.ContentText) HeaderText="İçerik Yazısı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
                                      
-                                    <GridColumn Field=@nameof(ListServiceDto.Foto) HeaderText="Resim" TextAlign="TextAlign.Left" Width="120">
+                                    <GridColumn Field=@nameof(ListSectorDto.Photo1) HeaderText="Resim 1" TextAlign="TextAlign.Left" Width="120">
                                         <Template>
                                             @{
-                                                var imgBase = (context as ListServiceDto).Foto;
+                                                var imgBase = (context as ListSectorDto).Photo1;
                                             if (imgBase.Length > 0)
                                             {
                                                 var base64 = Convert.ToBase64String(imgBase);
@@ -90,10 +79,56 @@ else
                                             }
                                         </Template>
                                     </GridColumn>
+                                    <GridColumn Field=@nameof(ListSectorDto.Photo2) HeaderText="Resim 2" TextAlign="TextAlign.Left" Width="120">
+                                        <Template>
+                                            @{
+                                                var imgBase = (context as ListSectorDto).Photo2;
+                                            if (imgBase.Length > 0)
+                                            {
+                                                var base64 = Convert.ToBase64String(imgBase);
+                                                var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                                @*<img src="@imgSrc" />*@
+
+                                                    <div style="text-align:center;">
+                                                        <img src="@imgSrc" style="width:75px;height:75px;" />
+                                                    </div>
+                                            }
+                                            else
+                                            {
+                                                    <div style="text-align:center;">
+                                                        <img src="" style="width:75px;height:75px;" />
+                                                    </div>
+                                                }
+                                            }
+                                        </Template>
+                                    </GridColumn>
+                                    <GridColumn Field=@nameof(ListSectorDto.Photo3) HeaderText="Resim 3" TextAlign="TextAlign.Left" Width="120">
+                                        <Template>
+                                            @{
+                                                var imgBase = (context as ListSectorDto).Photo3;
+                                                if (imgBase.Length > 0)
+                                                {
+                                                    var base64 = Convert.ToBase64String(imgBase);
+                                                    var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                                    @*<img src="@imgSrc" />*@
+
+                                                    <div style="text-align:center;">
+                                                        <img src="@imgSrc" style="width:75px;height:75px;" />
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div style="text-align:center;">
+                                                        <img src="" style="width:75px;height:75px;" />
+                                                    </div>
+                                                }
+                                            }
+                                        </Template>
+                                    </GridColumn>
                                      <GridColumn Field="İşlemler" HeaderText="İşlemler" TextAlign="TextAlign.Left" Width="120">
                                         <Template>
-                                            <button class="btn btn-success" @onclick="() => EditItem(context as ListServiceDto)"><i class="fa fa-pen"></i></button>
-                                            <button class="btn btn-danger" @onclick="() => DeleteItem(context as ListServiceDto)"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-success" @onclick="() => EditItem(context as ListSectorDto)"><i class="fa fa-pen"></i></button>
+                                            <button class="btn btn-danger" @onclick="() => DeleteItem(context as ListSectorDto)"><i class="fa fa-trash"></i></button>
                                         </Template>
                                     </GridColumn>
 
@@ -112,13 +147,14 @@ else
          ShowFooter="true"
          CloseOnEscape="false"
          CloseOnOutsideClick="false"
-         HeaderText="Service Listesi"
+         HeaderText="Sektör Listesi"
          HeaderCssClass="HeaderTitleCss">
 
         <BodyTemplate>
             <DxGridLayout CssClass="TSIGridLayout">
 
                 <Rows>
+                    <DxGridLayoutRow Height="20%" />
                     <DxGridLayoutRow Height="20%" />
                     <DxGridLayoutRow Height="20%" />
                     <DxGridLayoutRow Height="20%" />
@@ -154,7 +190,7 @@ else
                         <Template>
                             <br />
                             <label class="TSIModalLabel"><strong>Hizmet İsmi</strong></label><br />
-                            <SfTextBox CssClass=" " @bind-Value="DataSource.ServiceName"></SfTextBox>
+                            <SfTextBox CssClass=" " @bind-Value="DataSource.SectorName"></SfTextBox>
                         </Template>
                     </DxGridLayoutItem>
                     <DxGridLayoutItem Row="3" Column="1">
@@ -169,7 +205,7 @@ else
                      <DxGridLayoutItem Row="0" Column="3" ColumnSpan="2">
                         <Template>
                             @{
-                                var imgBase = DataSource.Foto;
+                                var imgBase = DataSource.Photo1;
 
                                 if (imgBase != null && imgBase.Length > 0)
                                 {
@@ -186,11 +222,68 @@ else
                             }
                         </Template>
                     </DxGridLayoutItem>
-                    <DxGridLayoutItem Row="2" Column="3">
+                    <DxGridLayoutItem Row="1" Column="3">
                         <Template>
                             <br />
                             <div class="file-input-zone">
-                                <InputFile OnChange="UploadFiles" />
+                                <InputFile OnChange="UploadFiles1" />
+                            </div>
+                        </Template>
+                    </DxGridLayoutItem>
+
+                     <DxGridLayoutItem Row="2" Column="3" ColumnSpan="2">
+                        <Template>
+                            @{
+                                var imgBase = DataSource.Photo2;
+
+                                if (imgBase != null && imgBase.Length > 0)
+                                {
+                                    var base64 = Convert.ToBase64String(imgBase);
+                                    var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                    <br />
+                                    <img src="@imgSrc" style="width:150px;height:150px;" />
+                                }
+                                else
+                                {
+                                    <br />
+                                    <img src="images/resimYok.jpg" style="width:150px;height:150px;" />
+                                }
+                            }
+                        </Template>
+                    </DxGridLayoutItem>
+                    <DxGridLayoutItem Row="3" Column="3">
+                        <Template>
+                            <br />
+                            <div class="file-input-zone">
+                                <InputFile OnChange="UploadFiles2" />
+                            </div>
+                        </Template>
+                    </DxGridLayoutItem>
+                    <DxGridLayoutItem Row="4" Column="3" ColumnSpan="2">
+                        <Template>
+                            @{
+                                var imgBase = DataSource.Photo3;
+
+                                if (imgBase != null && imgBase.Length > 0)
+                                {
+                                    var base64 = Convert.ToBase64String(imgBase);
+                                    var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                    <br />
+                                    <img src="@imgSrc" style="width:150px;height:150px;" />
+                                }
+                                else
+                                {
+                                    <br />
+                                    <img src="images/resimYok.jpg" style="width:150px;height:150px;" />
+                                }
+                            }
+                        </Template>
+                    </DxGridLayoutItem>
+                    <DxGridLayoutItem Row="5" Column="3">
+                        <Template>
+                            <br />
+                            <div class="file-input-zone">
+                                <InputFile OnChange="UploadFiles3" />
                             </div>
                         </Template>
                     </DxGridLayoutItem>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShelterApp.Core.Extensions;
 using ShelterApp.Entities.Entities.Blog;
+using ShelterApp.Entities.Entities.Privilege;
 using ShelterApp.Entities.Entities.Product;
 using ShelterApp.Entities.Entities.Sector;
 using System;
@@ -43,19 +44,36 @@ namespace ShelterApp.DataAccess.EntitiyFrameworkCore.Configurations
 
             });
         } 
-        public static void ConfigureService(this ModelBuilder builder)
+        public static void ConfigureSector(this ModelBuilder builder)
         {
-            builder.Entity<TBL_Service>(b =>
+            builder.Entity<TBL_Sector>(b =>
             {
-                b.ToTable("TBL_Service");
+                b.ToTable("TBL_Sector");
                 b.ConfigureByConvention();
 
                 b.Property(t => t.ContentText).IsRequired().HasColumnType("nvarchar(max)");
                 b.Property(t => t.HeaderText).IsRequired().HasColumnType("nvarchar(max)");
                 b.Property(t => t.TextInPicture).IsRequired().HasColumnType("nvarchar(max)");
-                b.Property(t => t.ServiceName).IsRequired().HasColumnType("nvarchar(max)");
+                b.Property(t => t.SectorName).IsRequired().HasColumnType("nvarchar(max)");
               
-                b.Property(t => t.Foto).HasColumnType("varbinary(max)");
+                b.Property(t => t.Photo1).HasColumnType("varbinary(max)");
+                b.Property(t => t.Photo2).HasColumnType("varbinary(max)");
+                b.Property(t => t.Photo3).HasColumnType("varbinary(max)");
+
+            });
+        }
+
+        public static void ConfigurePrivilege(this ModelBuilder builder)
+        {
+            builder.Entity<TBL_Privilege>(b =>
+            {
+                b.ToTable("TBL_Privilege");
+                b.ConfigureByConvention();
+
+                b.Property(t => t.PrivilegeName).IsRequired().HasColumnType("nvarchar(max)");
+                b.Property(t => t.TextInPicture).IsRequired().HasColumnType("nvarchar(max)");
+                b.Property(t => t.Photo).HasColumnType("varbinary(max)");
+
 
             });
         }

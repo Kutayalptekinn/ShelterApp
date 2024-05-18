@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using ShelterApp.Entities.Entities.Blog;
 using ShelterApp.Entities.Entities.Blog.dtos;
+using ShelterApp.Entities.Entities.Privilege;
+using ShelterApp.Entities.Entities.Privilege.dtos;
 using ShelterApp.Entities.Entities.Product;
 using ShelterApp.Entities.Entities.Product.dtos;
 using ShelterApp.Entities.Entities.Sector;
-using ShelterApp.Entities.Entities.Service.dtos;
+using ShelterApp.Entities.Entities.Sector.dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,12 +37,20 @@ namespace ShelterApp.Business
 
 
 
-            CreateMap<TBL_Service, SelectServiceDto>();
-            CreateMap<TBL_Service, ListServiceDto>();
-            CreateMap<CreateServiceDto, TBL_Service>();
-            CreateMap<SelectServiceDto, CreateServiceDto>();
-            CreateMap<UpdateServiceDto, TBL_Service>();
-            CreateMap<SelectServiceDto, UpdateServiceDto>();
+            CreateMap<TBL_Privilege, SelectPrivilegeDto>();
+            CreateMap<TBL_Privilege, ListPrivilegeDto>();
+            CreateMap<CreatePrivilegeDto, TBL_Privilege>();
+            CreateMap<SelectPrivilegeDto, CreatePrivilegeDto>();
+            CreateMap<UpdatePrivilegeDto, TBL_Privilege>();
+            CreateMap<SelectPrivilegeDto, UpdatePrivilegeDto>();
+
+
+            CreateMap<TBL_Sector, SelectSectorDto>();
+            CreateMap<TBL_Sector, ListSectorDto>();
+            CreateMap<CreateSectorDto, TBL_Sector>();
+            CreateMap<SelectSectorDto, CreateSectorDto>();
+            CreateMap<UpdateSectorDto, TBL_Sector>();
+            CreateMap<SelectSectorDto, UpdateSectorDto>();
         }
     }
 }

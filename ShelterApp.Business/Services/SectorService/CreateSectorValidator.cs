@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShelterApp.Business.Services.ServiceService
+namespace ShelterApp.Business.Services.SectorService
 {
-    public class UpdateServiceValidator
+    internal class CreateSectorValidator
     {
     }
 }

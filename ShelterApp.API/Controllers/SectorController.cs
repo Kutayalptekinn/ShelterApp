@@ -1,17 +1,17 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using ShelterApp.Business.Services.ServiceService;
-using ShelterApp.Entities.Entities.Service.dtos;
+using ShelterApp.Business.Services.SectorService;
+using ShelterApp.Entities.Entities.Sector.dtos;
 
 namespace ShelterApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServiceController : ControllerBase
+    public class SectorController : ControllerBase
     {
-        private IServiceAppService _appService;
+        private ISectorAppService _appService;
 
-        public ServiceController(IServiceAppService appService)
+        public SectorController(ISectorAppService appService)
         {
             _appService = appService;
         }
@@ -43,7 +43,7 @@ namespace ShelterApp.API.Controllers
         }
 
         [HttpPost("InsertAsync")]
-        public async Task<IActionResult> Insert(CreateServiceDto branch)
+        public async Task<IActionResult> Insert(CreateSectorDto branch)
         {
             var result = (await _appService.CreateAsync(branch));
 
@@ -56,7 +56,7 @@ namespace ShelterApp.API.Controllers
         }
 
         [HttpPut("UpdateAsync")]
-        public async Task<IActionResult> Update(UpdateServiceDto branch)
+        public async Task<IActionResult> Update(UpdateSectorDto branch)
         {
             var result = (await _appService.UpdateAsync(branch));
 

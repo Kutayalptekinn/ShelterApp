@@ -7,13 +7,14 @@ using ShelterApp.Core.Utilities.MapperUtilities.Extensions;
 using ShelterApp.Business.Services.BlogService;
 using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Blog;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using ShelterApp.Business.Services.ProductService;
 using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Product;
-using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Service;
-using ShelterApp.Business.Services.ServiceService;
 using ShelterApp.Business.Services.MailService;
+using ShelterApp.Business.Services.SectorService;
+using ShelterApp.Business.Services.PrivilegeService;
+using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Sector;
+using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Privilege;
 
 namespace ShelterApp.Business
 {
@@ -24,7 +25,9 @@ namespace ShelterApp.Business
 
             services.AddCors(options => options.AddPolicy("AllowLocalhost", builder =>
             {
-                builder.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+                builder.WithOrigins("http://localhost:3000", "https://duos-flame.vercel.app")
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
             }));
 
             services.AddMvc();
@@ -35,9 +38,11 @@ namespace ShelterApp.Business
             SetMapperToObjectMapper();
             services.AddScoped<IProductAppService, ProductAppService>(); 
             services.AddScoped<IBlogAppService, BlogAppService>(); 
-            services.AddScoped<IServiceAppService, ServiceAppService>(); 
+            services.AddScoped<ISectorAppService, SectorAppService>(); 
+            services.AddScoped<IPrivilegeAppService, PrivilegeAppService>(); 
             services.AddScoped<IBlogRepository, EFCoreBlogRepository>();
-            services.AddScoped<IServiceRepository, EFCoreServiceRepository>();
+            services.AddScoped<ISectorRepository, EFCoreSectorRepository>();
+            services.AddScoped<IPrivilegeRepository, EFCorePrivilegeRepository>();
             services.AddScoped<IProductRepository, EFCoreProductRepository>();
             services.AddTransient<IEmailSender, EmailSender>();
         }

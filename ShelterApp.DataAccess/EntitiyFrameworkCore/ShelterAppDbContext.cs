@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ShelterApp.DataAccess.EntitiyFrameworkCore.Configurations;
 using ShelterApp.Entities.Entities.Blog;
+using ShelterApp.Entities.Entities.Privilege;
 using ShelterApp.Entities.Entities.Product;
 using ShelterApp.Entities.Entities.Sector;
 using System;
@@ -48,10 +49,12 @@ namespace ShelterApp.DataAccess.EntitiyFrameworkCore
         {
             builder.ConfigureBlog();
             builder.ConfigureProduct();
-            builder.ConfigureService();
+            builder.ConfigureSector();
+            builder.ConfigurePrivilege();
          }
         public DbSet<TBL_Blog> TBL_Bloglar { get; set; }
         public DbSet<TBL_Product> TBL_Products { get; set; }
-        public DbSet<TBL_Service> TBL_Services { get; set; }
+        public DbSet<TBL_Sector> TBL_Sectors { get; set; }
+        public DbSet<TBL_Privilege> TBL_Privileges { get; set; }
     }
 }

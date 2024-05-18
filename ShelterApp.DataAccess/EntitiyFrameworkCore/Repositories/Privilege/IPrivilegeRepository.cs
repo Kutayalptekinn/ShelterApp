@@ -1,16 +1,15 @@
 ﻿using ShelterApp.Core.Repositories.EntityFrameworkCore;
-using ShelterApp.Entities.Entities.Blog;
+using ShelterApp.Entities.Entities.Privilege;
 using ShelterApp.Entities.Entities.Sector;
-using ShelterApp.Entities.Entities.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Service
+namespace ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Privilege
 {
-    public interface IServiceRepository: IEfCoreRepository<TBL_Service>
+    public interface IPrivilegeRepository : IEfCoreRepository<TBL_Privilege>
     {
     }
 }
