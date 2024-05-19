@@ -24,7 +24,7 @@ namespace ShelterApp.Pages.Sector
 
             if (file != null)
             {
-                Stream stream = e.File.OpenReadStream();
+                Stream stream = e.File.OpenReadStream(maxAllowedSize: 1024 * 3000);
 
                 using (var ms = new MemoryStream())
                 {
@@ -40,7 +40,7 @@ namespace ShelterApp.Pages.Sector
 
             if (file != null)
             {
-                Stream stream = e.File.OpenReadStream();
+                Stream stream = e.File.OpenReadStream(maxAllowedSize: 1024 * 3000);
 
                 using (var ms = new MemoryStream())
                 {
@@ -56,7 +56,7 @@ namespace ShelterApp.Pages.Sector
 
             if (file != null)
             {
-                Stream stream = e.File.OpenReadStream();
+                Stream stream = e.File.OpenReadStream(maxAllowedSize: 1024 * 3000);
 
                 using (var ms = new MemoryStream())
                 {
@@ -72,7 +72,7 @@ namespace ShelterApp.Pages.Sector
 
             if (file != null)
             {
-                Stream stream = e.File.OpenReadStream();
+                Stream stream = e.File.OpenReadStream(maxAllowedSize: 1024 * 3000);
 
                 using (var ms = new MemoryStream())
                 {

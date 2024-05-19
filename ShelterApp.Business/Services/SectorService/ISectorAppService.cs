@@ -11,6 +11,8 @@ namespace ShelterApp.Business.Services.SectorService
     public interface ISectorAppService : ICrudAppService<SelectSectorDto, ListSectorDto, CreateSectorDto, UpdateSectorDto>
     {
         public Task<IList<ListSectorDto>> GetById(int id);
+        Task<SelectSectorDto> GetByNameAsync(string name);
+
 
     }
 }

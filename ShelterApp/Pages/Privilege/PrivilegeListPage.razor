@@ -51,9 +51,9 @@ else
                                             @siraNo
                                         </Template>
                                     </GridColumn>
-                                    <GridColumn Field=@nameof(ListPrivilegeDto.TextInPicture) HeaderText="Resim Yazısı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
-                                    <GridColumn Field=@nameof(ListPrivilegeDto.PrivilegeName) HeaderText="Sektör Adı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
 
+                                    <GridColumn Field=@nameof(ListPrivilegeDto.PrivilegeName) HeaderText="Sektör Adı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
+                                    <GridColumn Field=@nameof(ListPrivilegeDto.TextInPicture) HeaderText="Resim Yazısı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
                                      
                                     <GridColumn Field=@nameof(ListPrivilegeDto.Photo) HeaderText="Resim" TextAlign="TextAlign.Left" Width="120">
                                         <Template>
@@ -129,21 +129,19 @@ else
                     <DxGridLayoutItem Row="0" Column="1">
                         <Template>
                             <br />
-                            <label class="TSIModalLabel"><strong>Resim Yazısı</strong></label><br />
-                            <SfTextBox CssClass=" " @bind-Value="DataSource.TextInPicture"></SfTextBox>
+                            <label class="TSIModalLabel"><strong>Ayrıcalık İsmi</strong></label><br />
+                            <SfTextBox @bind-Value="DataSource.PrivilegeName"></SfTextBox>
                         </Template>
                     </DxGridLayoutItem>
-                    
+
                     <DxGridLayoutItem Row="2" Column="1">
                         <Template>
                             <br />
-                            <label class="TSIModalLabel"><strong>Ayrıcalık İsmi</strong></label><br />
-                            <SfTextBox CssClass=" " @bind-Value="DataSource.PrivilegeName"></SfTextBox>
+                            <label class="TSIModalLabel"><strong>Resim Yazısı</strong></label><br />
+                            <SfTextBox Multiline="true" @bind-Value="DataSource.TextInPicture"></SfTextBox>
                         </Template>
                     </DxGridLayoutItem>
-
-                 
-
+                    
                      <DxGridLayoutItem Row="0" Column="3" ColumnSpan="2">
                         <Template>
                             @{

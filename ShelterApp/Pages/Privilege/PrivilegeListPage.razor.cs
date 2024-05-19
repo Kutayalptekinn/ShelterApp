@@ -24,7 +24,7 @@ namespace ShelterApp.Pages.Privilege
 
             if (file != null)
             {
-                Stream stream = e.File.OpenReadStream();
+                Stream stream = e.File.OpenReadStream(maxAllowedSize: 1024 * 3000);
 
                 using (var ms = new MemoryStream())
                 {
@@ -32,6 +32,12 @@ namespace ShelterApp.Pages.Privilege
                     DataSource.Photo = ms.ToArray();
                     await InvokeAsync(() => StateHasChanged());
                 }
+                //var buffer = new byte[file.Size];
+                //await file.OpenReadStream().ReadAsync(buffer);
+                //var base64 = Convert.ToBase64String(buffer);
+
+                //// Base64 dizesinin DataSource.Resim özelliğine atanması
+                //DataSource.Photo = Convert.FromBase64String(base64);
             }
         }
 

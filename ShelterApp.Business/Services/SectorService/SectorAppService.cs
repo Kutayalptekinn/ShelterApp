@@ -1,7 +1,10 @@
 ﻿using ShelterApp.Core.Utilities.MapperUtilities.Extensions;
 using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Sector;
+using ShelterApp.Entities.Entities.Privilege.dtos;
+using ShelterApp.Entities.Entities.Privilege;
 using ShelterApp.Entities.Entities.Sector;
 using ShelterApp.Entities.Entities.Sector.dtos;
+using ShelterApp.Core.Entities;
 
 
 
@@ -69,6 +72,15 @@ namespace ShelterApp.Business.Services.SectorService
             var list = await _repository.GetListAsync(t => t.ID == id);
 
             var mappedEntity = ObjectMapper.Map<List<TBL_Sector>, List<ListSectorDto>>(list.ToList());
+
+            return mappedEntity;
+
+        }
+        public async Task<SelectSectorDto> GetByNameAsync(string name)
+        {
+            var sector = await _repository.GetAsync(t => t.SectorName == name);
+
+            var mappedEntity = ObjectMapper.Map<TBL_Sector, SelectSectorDto>(sector);
 
             return mappedEntity;
 

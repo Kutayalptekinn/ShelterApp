@@ -41,6 +41,18 @@ namespace ShelterApp.API.Controllers
 
             return BadRequest();
         }
+        [HttpGet("GetByNameAsync")]
+        public async Task<IActionResult> GetByName(string name)
+        {
+            var result = (await _appService.GetByNameAsync(name));
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
 
         [HttpPost("InsertAsync")]
         public async Task<IActionResult> Insert(CreateSectorDto branch)
