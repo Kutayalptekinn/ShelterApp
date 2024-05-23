@@ -10,6 +10,6 @@ namespace ShelterApp.Entities.Entities.Product.dtos
     public class UpdateProductDto:FullEntityDto
     {
         public string Baslik { get; set; }
-        public byte[] Foto { get; set; }
-    }
+        public string Foto { get; set; }
+    }   
 }

@@ -12,7 +12,7 @@ namespace ShelterApp.Entities.Entities.Blog.dtos
         public string Baslik { get; set; }
         public string Konu { get; set; }
         public string Icerik { get; set; }
-        public byte[] Foto { get; set; }
+        public string Foto { get; set; }
         public string Yazar { get; set; }
         public DateTime Tarih { get; set; }
 

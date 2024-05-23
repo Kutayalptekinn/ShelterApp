@@ -10,6 +10,6 @@ namespace ShelterApp.Entities.Entities.Product
     public class TBL_Product:FullEntity
     {
         public string Baslik { get; set; }
-        public byte[] Foto { get; set; }
+        public string Foto { get; set; }
     }
 }

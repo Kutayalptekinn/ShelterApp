@@ -29,11 +29,11 @@ namespace ShelterApp.Pages.Privilege
                 using (var ms = new MemoryStream())
                 {
                     await stream.CopyToAsync(ms);
-                    DataSource.Photo = ms.ToArray();
+                    //DataSource.Photo = ms.ToArray();
                     await InvokeAsync(() => StateHasChanged());
                 }
                 //var buffer = new byte[file.Size];
-                //await file.OpenReadStream().ReadAsync(buffer);
+                //await file.OpenReadStream(maxAllowedSize: 1024 * 3000).ReadAsync(buffer);
                 //var base64 = Convert.ToBase64String(buffer);
 
                 //// Base64 dizesinin DataSource.Resim özelliğine atanması

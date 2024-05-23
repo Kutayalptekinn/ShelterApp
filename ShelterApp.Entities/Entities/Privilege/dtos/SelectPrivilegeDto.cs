@@ -11,6 +11,6 @@ namespace ShelterApp.Entities.Entities.Privilege.dtos
     {
         public string PrivilegeName { get; set; }
         public string TextInPicture { get; set; }
-        public byte[] Photo { get; set; }
+        public string Photo { get; set; }
     }
 }

@@ -61,13 +61,15 @@ else
                                                 var imgBase = (context as ListSectorDto).FrontPhoto;
                                                 if (imgBase.Length > 0)
                                                 {
-                                                    var base64 = Convert.ToBase64String(imgBase);
-                                                    var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
-                                                    @*<img src="@imgSrc" />*@
+                                                    // var base64 = Convert.ToBase64String(imgBase);
+                                                    // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                                    // @*<img src="@imgSrc" />*@
 
-                                                    <div style="text-align:center;">
-                                                        <img src="@imgSrc" style="width:75px;height:75px;" />
-                                                    </div>
+                                                    // <div style="text-align:center;">
+                                                    //     <img src="@imgSrc" style="width:75px;height:75px;" />
+                                                    // </div>
+                                                    <br />
+                                                    <img src="@imgBase" style="width:100px;height:100px;" />
                                                 }
                                                 else
                                                 {
@@ -84,13 +86,15 @@ else
                                                 var imgBase = (context as ListSectorDto).Photo1;
                                             if (imgBase.Length > 0)
                                             {
-                                                var base64 = Convert.ToBase64String(imgBase);
-                                                var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
-                                                @*<img src="@imgSrc" />*@
+                                                // var base64 = Convert.ToBase64String(imgBase);
+                                                // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                                // @*<img src="@imgSrc" />*@
 
-                                                    <div style="text-align:center;">
-                                                        <img src="@imgSrc" style="width:75px;height:75px;" />
-                                                    </div>
+                                                //     <div style="text-align:center;">
+                                                //         <img src="@imgSrc" style="width:75px;height:75px;" />
+                                                //     </div>
+                                                    <br />
+                                                    <img src="@imgBase" style="width:100px;height:100px;" />
                                             }
                                             else
                                             {
@@ -107,13 +111,15 @@ else
                                                 var imgBase = (context as ListSectorDto).Photo2;
                                             if (imgBase.Length > 0)
                                             {
-                                                var base64 = Convert.ToBase64String(imgBase);
-                                                var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
-                                                @*<img src="@imgSrc" />*@
+                                                // var base64 = Convert.ToBase64String(imgBase);
+                                                // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                                // @*<img src="@imgSrc" />*@
 
-                                                    <div style="text-align:center;">
-                                                        <img src="@imgSrc" style="width:75px;height:75px;" />
-                                                    </div>
+                                                //     <div style="text-align:center;">
+                                                //         <img src="@imgSrc" style="width:75px;height:75px;" />
+                                                //     </div>
+                                                    <br />
+                                                    <img src="@imgBase" style="width:100px;height:100px;" />
                                             }
                                             else
                                             {
@@ -130,13 +136,15 @@ else
                                                 var imgBase = (context as ListSectorDto).Photo3;
                                                 if (imgBase.Length > 0)
                                                 {
-                                                    var base64 = Convert.ToBase64String(imgBase);
-                                                    var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                                    // var base64 = Convert.ToBase64String(imgBase);
+                                                    // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
                                                     @*<img src="@imgSrc" />*@
 
-                                                    <div style="text-align:center;">
-                                                        <img src="@imgSrc" style="width:75px;height:75px;" />
-                                                    </div>
+                                                    // <div style="text-align:center;">
+                                                    //     <img src="@imgSrc" style="width:75px;height:75px;" />
+                                                    // </div>
+                                                    <br />
+                                                    <img src="@imgBase" style="width:100px;height:100px;" />
                                                 }
                                                 else
                                                 {
@@ -234,10 +242,12 @@ else
 
                                 if (imgBase != null && imgBase.Length > 0)
                                 {
-                                    var base64 = Convert.ToBase64String(imgBase);
-                                    var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                    // var base64 = Convert.ToBase64String(imgBase);
+                                    // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                    // <br />
+                                    // <img src="@imgSrc" style="width:100px;height:100px;" />
                                     <br />
-                                    <img src="@imgSrc" style="width:100px;height:100px;" />
+                                    <img src="@imgBase" style="width:100px;height:100px;" />
                                 }
                                 else
                                 {
@@ -260,10 +270,12 @@ else
 
                                 if (imgBase != null && imgBase.Length > 0)
                                 {
-                                    var base64 = Convert.ToBase64String(imgBase);
-                                    var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                    // var base64 = Convert.ToBase64String(imgBase);
+                                    // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                    // <br />
+                                    // <img src="@imgSrc" style="width:100px;height:100px;" />
                                     <br />
-                                    <img src="@imgSrc" style="width:100px;height:100px;" />
+                                    <img src="@imgBase" style="width:100px;height:100px;" />
                                 }
                                 else
                                 {
@@ -286,10 +298,12 @@ else
 
                                 if (imgBase != null && imgBase.Length > 0)
                                 {
-                                    var base64 = Convert.ToBase64String(imgBase);
-                                    var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                    // var base64 = Convert.ToBase64String(imgBase);
+                                    // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                    // <br />
+                                    // <img src="@imgSrc" style="width:100px;height:100px;" />
                                     <br />
-                                    <img src="@imgSrc" style="width:100px;height:100px;" />
+                                    <img src="@imgBase" style="width:100px;height:100px;" />
                                 }
                                 else
                                 {
@@ -312,10 +326,10 @@ else
 
                                 if (imgBase != null && imgBase.Length > 0)
                                 {
-                                    var base64 = Convert.ToBase64String(imgBase);
-                                    var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
-                                    <br />
-                                    <img src="@imgSrc" style="width:100px;height:100px;" />
+                                    // var base64 = Convert.ToBase64String(imgBase);
+                                    // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+                                     <br />
+                                    <img src="@imgBase" style="width:100px;height:100px;" />
                                 }
                                 else
                                 {

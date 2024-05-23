@@ -24,17 +24,17 @@ namespace ShelterApp.Pages.Blog
 
             if (file != null)
             {
-                Stream stream = e.File.OpenReadStream();
+                Stream stream = e.File.OpenReadStream(maxAllowedSize: 1024 * 3000);
 
                 using (var ms = new MemoryStream())
                 {
                     await stream.CopyToAsync(ms);
-                    DataSource.Foto = ms.ToArray();
+                    //DataSource.Foto = ms.ToArray();
                     await InvokeAsync(() => StateHasChanged());
                 }
                 //// Dosyanın Base64'e dönüştürülmesi
                 //var buffer = new byte[file.Size];
-                //await file.OpenReadStream().ReadAsync(buffer);
+                //await file.OpenReadStream(maxAllowedSize: 1024 * 3000).ReadAsync(buffer);
                 //var base64 = Convert.ToBase64String(buffer);
 
                 //// Base64 dizesinin DataSource.Resim özelliğine atanması
