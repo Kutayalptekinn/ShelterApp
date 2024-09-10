@@ -26,8 +26,9 @@ namespace ShelterApp.DataAccess.EntitiyFrameworkCore.Configurations
                 b.Property(t => t.Baslik).IsRequired().HasColumnType("nvarchar(max)");
                 b.Property(t => t.Icerik).IsRequired().HasColumnType("nvarchar(max)");
                 b.Property(t => t.Tarih).HasColumnType(SqlDbType.DateTime.ToString());
-                b.Property(t => t.Yazar).IsRequired().HasColumnType("nvarchar(max)");
-                b.Property(t => t.Foto).HasColumnType("varbinary(max)");
+                b.Property(t => t.Yazar).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Foto).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Language).IsRequired().HasColumnType("nvarchar(max)");
 
             });
         }
@@ -38,9 +39,16 @@ namespace ShelterApp.DataAccess.EntitiyFrameworkCore.Configurations
                 b.ToTable("TBL_Product");
                 b.ConfigureByConvention();
 
-                b.Property(t => t.Baslik).IsRequired().HasColumnType("nvarchar(max)");
-              
-                b.Property(t => t.Foto).HasColumnType("varbinary(max)");
+                b.Property(t => t.Baslik).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Detay).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Isim).IsRequired().HasColumnType("nvarchar(max)");
+                b.Property(t => t.Icerik).IsRequired().HasColumnType("nvarchar(max)");
+                b.Property(t => t.UstBaslik).IsRequired().HasColumnType("nvarchar(max)");
+                b.Property(t => t.FrontPhoto).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Photo1).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Photo2).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Photo3).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Language).IsRequired().HasColumnType("nvarchar(max)");
 
             });
         } 
@@ -55,11 +63,11 @@ namespace ShelterApp.DataAccess.EntitiyFrameworkCore.Configurations
                 b.Property(t => t.HeaderText).IsRequired().HasColumnType("nvarchar(max)");
                 b.Property(t => t.TextInPicture).IsRequired().HasColumnType("nvarchar(max)");
                 b.Property(t => t.SectorName).IsRequired().HasColumnType("nvarchar(max)");
-              
-                b.Property(t => t.FrontPhoto).HasColumnType("varbinary(max)");
-                b.Property(t => t.Photo1).HasColumnType("varbinary(max)");
-                b.Property(t => t.Photo2).HasColumnType("varbinary(max)");
-                b.Property(t => t.Photo3).HasColumnType("varbinary(max)");
+                b.Property(t => t.Language).IsRequired().HasColumnType("nvarchar(max)");
+                b.Property(t => t.FrontPhoto).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Photo1).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Photo2).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Photo3).IsRequired(false).HasColumnType("nvarchar(max)");
 
             });
         }
@@ -73,7 +81,8 @@ namespace ShelterApp.DataAccess.EntitiyFrameworkCore.Configurations
 
                 b.Property(t => t.PrivilegeName).IsRequired().HasColumnType("nvarchar(max)");
                 b.Property(t => t.TextInPicture).IsRequired().HasColumnType("nvarchar(max)");
-                b.Property(t => t.Photo).HasColumnType("varbinary(max)");
+                b.Property(t => t.Photo).IsRequired(false).HasColumnType("nvarchar(max)");
+                b.Property(t => t.Language).IsRequired().HasColumnType("nvarchar(max)");
 
 
             });

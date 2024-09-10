@@ -19,9 +19,9 @@ namespace ShelterApp.API.Controllers
         [HttpGet("GetListAsync")]
         public async Task<IActionResult> GetList()
         {
-            var result = ((await _appService.GetListAsync())).ToList();
+            var result = ((await _appService.GetListAsyncForAPI()));
 
-            if (result.Count > 0)
+            if (result != null)
             {
                 return Ok(result);
             }

@@ -19,9 +19,9 @@ namespace ShelterApp.API.Controllers
         [HttpGet("GetListAsync")]
         public async Task<IActionResult> GetList()
         {
-            var result = ((await _appService.GetListAsync())).ToList();
+            var result = ((await _appService.GetListAsyncForAPI()));
 
-            if (result.Count > 0)
+            if (result != null)
             {
                 return Ok(result);
             }
@@ -41,7 +41,18 @@ namespace ShelterApp.API.Controllers
 
             return BadRequest();
         }
+        [HttpGet("GetByBaslikAsync")]
+        public async Task<IActionResult> GetByBaslik(string baslik)
+        {
+            var result = (await _appService.GetByBaslikAsync(baslik));
 
+            if (result != null)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
         [HttpPost("InsertAsync")]
         public async Task<IActionResult> Insert(CreateBlogDto branch)
         {

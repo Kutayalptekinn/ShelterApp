@@ -35,7 +35,7 @@ builder.Services.AddControllers();
 //            options.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=ShelterAppDB;TrustServerCertificate=True;"), ServiceLifetime.Transient);
 builder.Services.AddDbContextFactory<ShelterAppDbContext>(
         options =>
-            options.UseSqlServer(@"Server=shelterappapidbserver.database.windows.net;Database=ShelterApp.API_db;UID=duoscorp;PWD=duos123.;TrustServerCertificate=True;"), ServiceLifetime.Transient);
+            options.UseSqlServer(@"Server=duosappdbserver.database.windows.net;Database=duosAPPDB;UID=duoscorp;PWD=duos123.;TrustServerCertificate=True;"), ServiceLifetime.Transient);
 
 
 var app = builder.Build();

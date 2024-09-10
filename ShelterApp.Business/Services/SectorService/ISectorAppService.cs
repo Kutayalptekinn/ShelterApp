@@ -12,6 +12,7 @@ namespace ShelterApp.Business.Services.SectorService
     {
         public Task<IList<ListSectorDto>> GetById(int id);
         Task<SelectSectorDto> GetByNameAsync(string name);
+        public Task<ListSectorDtoForAPI> GetListAsyncForAPI();
 
 
     }

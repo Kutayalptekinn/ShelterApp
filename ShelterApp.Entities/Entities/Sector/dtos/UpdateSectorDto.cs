@@ -17,5 +17,7 @@ namespace ShelterApp.Entities.Entities.Sector.dtos
         public string Photo1 { get; set; }
         public string Photo2 { get; set; }
         public string Photo3 { get; set; }
+        public string Language { get; set; }
+
     }
 }

@@ -5,6 +5,10 @@ namespace ShelterApp.Pages.Blog
 {
     public partial class BlogListPage
     {
+        public string secilenDil;
+        public List<string> dilList = new List<string>() { "TR", "GB", "RU" };
+        public bool photoVisible = false;
+
         protected override async void OnInitialized()
         {
             
@@ -20,26 +24,37 @@ namespace ShelterApp.Pages.Blog
         }
         private async Task UploadFiles(InputFileChangeEventArgs e)
         {
+            photoVisible = true;
+
             var file = e.File;
 
             if (file != null)
             {
-                Stream stream = e.File.OpenReadStream(maxAllowedSize: 1024 * 3000);
-
-                using (var ms = new MemoryStream())
+                string rootPath = "wwwroot/images/blog";
+                if (!Directory.Exists(rootPath))
                 {
-                    await stream.CopyToAsync(ms);
-                    //DataSource.Foto = ms.ToArray();
-                    await InvokeAsync(() => StateHasChanged());
+                    Directory.CreateDirectory(rootPath);
                 }
-                //// Dosyanın Base64'e dönüştürülmesi
-                //var buffer = new byte[file.Size];
-                //await file.OpenReadStream(maxAllowedSize: 1024 * 3000).ReadAsync(buffer);
-                //var base64 = Convert.ToBase64String(buffer);
 
-                //// Base64 dizesinin DataSource.Resim özelliğine atanması
-                //DataSource.Foto = Convert.FromBase64String(base64);
+                                string filePath = rootPath+"/"+file.Name;
+
+                using (FileStream filestream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                {
+                    await file.OpenReadStream(maxAllowedSize: 1024 * 3000).CopyToAsync(filestream);
+                }
+
+
+                DataSource.Foto = "images/blog"+ file.Name;
+
             }
+            photoVisible = false;
+
+        }
+        private async void OnDilValueChange(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string, string> args)
+        {
+            //secilenDil = args.Value;
+            DataSource.Language = args.Value;
+            await InvokeAsync(StateHasChanged);
         }
     }
 }

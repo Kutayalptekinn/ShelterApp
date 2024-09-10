@@ -2,6 +2,10 @@
 using ShelterApp.Entities.Entities.Blog;
 using ShelterApp.Entities.Entities.Blog.dtos;
 using ShelterApp.DataAccess.EntitiyFrameworkCore.Repositories.Blog;
+using ShelterApp.Entities.Entities.Blog.dtos;
+using ShelterApp.Entities.Entities.Sector.dtos;
+using ShelterApp.Entities.Entities.Sector;
+using ShelterApp.Entities.Entities.Product.dtos;
 
 namespace ShelterApp.Business.Services.BlogService
 {
@@ -28,6 +32,55 @@ namespace ShelterApp.Business.Services.BlogService
         {
             await _repository.DeleteAsync(id);
             await _repository.SaveChanges();
+        }
+        public async Task<ListBlogDtoForAPI> GetListAsyncForAPI()
+        {
+            var list = await _repository.GetListAsync();
+            ListBlogDtoForAPI listBlogDtos = new ListBlogDtoForAPI();
+            listBlogDtos.TR = new List<ListBlogDto>();
+            listBlogDtos.GB = new List<ListBlogDto>();
+            listBlogDtos.RU = new List<ListBlogDto>();
+
+            // Önceden kaydedilmiş Foto'ları ve ID'leri takip etmek için bir sözlük oluşturuyoruz
+            Dictionary<string, int> fotoIdMap = new Dictionary<string, int>();
+
+            foreach (var item in list)
+            {
+                ListBlogDto listBlogDto = new ListBlogDto();
+
+                if (fotoIdMap.ContainsKey(item.Foto))
+                {
+                    // Eğer Foto daha önce eklenmişse, aynı ID'yi kullanıyoruz
+                    listBlogDto.ID = fotoIdMap[item.Foto];
+                }
+                else
+                {
+                    // Eğer Foto daha önce eklenmemişse, yeni ID'yi kullanıyoruz ve sözlüğe ekliyoruz
+                    listBlogDto.ID = item.ID;
+                    fotoIdMap[item.Foto] = item.ID;
+                }
+
+                listBlogDto.Konu = item.Konu;
+                listBlogDto.Tarih = item.Tarih;
+                listBlogDto.Icerik = item.Icerik;
+                listBlogDto.Foto = item.Foto;
+                listBlogDto.Baslik = item.Baslik;
+                listBlogDto.Language = item.Language;
+
+                if (item.Language == "TR")
+                {
+                    listBlogDtos.TR.Add(listBlogDto);
+                }
+                else if (item.Language == "GB")
+                {
+                    listBlogDtos.GB.Add(listBlogDto);
+                }
+                else if (item.Language == "RU")
+                {
+                    listBlogDtos.RU.Add(listBlogDto);
+                }
+            }
+            return listBlogDtos;
         }
 
         public async Task<SelectBlogDto> GetAsync(int id)
@@ -71,5 +124,22 @@ namespace ShelterApp.Business.Services.BlogService
             return mappedEntity;
 
         }
+
+        public async Task<SelectBlogDto> GetByBaslikAsync(string baslik)
+        {
+            var blog = await _repository.GetAsync(t => t.Baslik == baslik);
+
+            var trBlog = _repository.GetListAsync().Result.FirstOrDefault(x => x.Foto == blog.Foto);
+            if (trBlog != null)
+            {
+                blog.ID = trBlog.ID;
+
+            }
+
+            var mappedEntity = ObjectMapper.Map<TBL_Blog, SelectBlogDto>(blog);
+
+            return mappedEntity;
+        }
+
     }
 }

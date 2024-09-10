@@ -11,6 +11,6 @@ namespace ShelterApp.Business.Services.PrivilegeService
     public interface IPrivilegeAppService : ICrudAppService<SelectPrivilegeDto, ListPrivilegeDto, CreatePrivilegeDto, UpdatePrivilegeDto>
     {
         public Task<IList<ListPrivilegeDto>> GetById(int id);
-
+        public Task<ListPrivilegeDtoForAPI> GetListAsyncForAPI();
     }
 }

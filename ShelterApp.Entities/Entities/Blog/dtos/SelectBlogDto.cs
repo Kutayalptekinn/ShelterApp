@@ -15,6 +15,7 @@ namespace ShelterApp.Entities.Entities.Blog.dtos
         public string Foto { get; set; }
         public string Yazar { get; set; }
         public DateTime Tarih { get; set; }
+        public string Language { get; set; }
 
     }
 }

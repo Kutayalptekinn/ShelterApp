@@ -17,11 +17,11 @@ namespace ShelterApp.Business.Services.MailService
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
             client.EnableSsl = true;
             client.UseDefaultCredentials = false;
-            client.Credentials = new NetworkCredential("cagatay.alptekin038@gmail.com", "opax nnwa lrgh gcmf");
+            client.Credentials = new NetworkCredential("kutayalptekin3@gmail.com", "otuj jyfe rmxx stgf");
 
             // Create email message
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("cagatay.alptekin038@gmail.com");
+            mailMessage.From = new MailAddress("kutayalptekin3@gmail.com");
             mailMessage.To.Add(toEmail);
             mailMessage.Subject = subject.AdSoyad;
             mailMessage.IsBodyHtml = true;

@@ -79,18 +79,13 @@ else
                                         <Template>
                                             @{
                                                 var imgBase = (context as ListBlogDto).Foto;
-                                            if (imgBase.Length > 0)
-                                            {
-                                                // var base64 = Convert.ToBase64String(imgBase);
-                                                // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
-                                                // @*<img src="@imgSrc" />*@
-
-                                                //     <div style="text-align:center;">
-                                                //         <img src="@imgSrc" style="width:75px;height:75px;" />
-                                                //     </div>
-                                            }
-                                            else
-                                            {
+                                                if (imgBase != null && imgBase.Length > 0)
+                                                {
+                                                    <br />
+                                                    <img src="@imgBase" style="width:75px;height:75px;" />
+                                                }
+                                                else
+                                                {
                                                     <div style="text-align:center;">
                                                         <img src="" style="width:75px;height:75px;" />
                                                     </div>
@@ -172,27 +167,28 @@ else
 
                                 if (imgBase != null && imgBase.Length > 0)
                                 {
-                                    // var base64 = Convert.ToBase64String(imgBase);
-                                    // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
-                                    // <br />
-                                    // <img src="@imgSrc" style="width:150px;height:150px;" />
+                                    <br />
+                                    <img src="@imgBase" style="width:100px;height:100px;" />
                                 }
                                 else
                                 {
                                     <br />
-                                    <img src="images/resimYok.jpg" style="width:150px;height:150px;" />
+                                    <img src="images/resimYok.jpg" style="width:100px;height:100px;" />
                                 }
                             }
-                        </Template>
-                    </DxGridLayoutItem>
-                    <DxGridLayoutItem Row="2" Column="3">
-                        <Template>
+                            <br />
+                            <br />
                             <br />
                             <div class="file-input-zone">
                                 <InputFile OnChange="UploadFiles" />
                             </div>
+                            @if (photoVisible)
+                            {
+                                <div id="loading" class="loading">Loading...</div>
+                            }
                         </Template>
                     </DxGridLayoutItem>
+
 
 
                     <DxGridLayoutItem Row="2" Column="1">
@@ -203,7 +199,17 @@ else
                         </Template>
                     </DxGridLayoutItem>
 
-
+                    <DxGridLayoutItem Row="2" Column="3">
+                        <Template>
+                            <br>
+                            <br>
+                            <br>
+                            <label><strong>Dil</strong></label><br />
+                            <SfComboBox TValue="string" TItem="string" Placeholder="Dil Seçiniz" DataSource="@dilList" @bind-Value=@DataSource.Language>
+                                <ComboBoxEvents TValue="string" TItem="string" ValueChange="OnDilValueChange"></ComboBoxEvents>
+                            </SfComboBox>
+                        </Template>
+                    </DxGridLayoutItem>
 
 
 
@@ -219,3 +225,32 @@ else
         </FooterContentTemplate>
     </DxPopup>
 }
+
+<style>
+
+
+    .hidden {
+        display: none;
+    }
+
+    .loading {
+        font-size: 24px;
+        color: #000;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+        .loading::before {
+            content: "";
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 4px solid #000;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+</style>

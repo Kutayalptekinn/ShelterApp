@@ -19,9 +19,9 @@ namespace ShelterApp.API.Controllers
         [HttpGet("GetListAsync")]
         public async Task<IActionResult> GetList()
         {
-            var result = ((await _appService.GetListAsync())).ToList();
+            var result = ((await _appService.GetListAsyncForAPI()));
 
-            if (result.Count > 0)
+            if (result != null)
             {
                 return Ok(result);
             }
@@ -33,6 +33,18 @@ namespace ShelterApp.API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var result = (await _appService.GetAsync(id));
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
+        [HttpGet("GetByIsimAsync")]
+        public async Task<IActionResult> GetByName(string isim)
+        {
+            var result = (await _appService.GetByIsimAsync(isim));
 
             if (result != null)
             {

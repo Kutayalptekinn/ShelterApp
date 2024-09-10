@@ -113,14 +113,14 @@ namespace ShelterApp.UI.Pages.Base
             }
             catch (Exception exp)
             {
-                //if (exp.InnerException != null)
-                //{
-                //    await ModalManager.MessagePopupAsync("Hata", exp.Message + "\n" + exp.InnerException.Message);
-                //}
-                //else
-                //{
-                //    await ModalManager.MessagePopupAsync("Hata", exp.Message);
-                //}
+                if (exp.InnerException != null)
+                {
+                    await JsRuntime.InvokeVoidAsync("confirmDelete", "Bilgi", exp.InnerException.Message);
+                }
+                else
+                {
+                    await JsRuntime.InvokeVoidAsync("confirmDelete", "Hata", exp.Message);
+                }
 
                 return default(TGetOutputDto);
             }
@@ -135,14 +135,14 @@ namespace ShelterApp.UI.Pages.Base
             }
             catch (Exception exp)
             {
-                //if (exp.InnerException != null)
-                //{
-                //    await ModalManager.MessagePopupAsync("Hata", exp.Message + "\n" + exp.InnerException.Message);
-                //}
-                //else
-                //{
-                //    await ModalManager.MessagePopupAsync("Hata", exp.Message);
-                //}
+                if (exp.InnerException != null)
+                {
+                    await JsRuntime.InvokeVoidAsync("confirmDelete", "Bilgi", exp.InnerException.Message);
+                }
+                else
+                {
+                    await JsRuntime.InvokeVoidAsync("confirmDelete", "Hata", exp.Message);
+                }
 
                 return null;
             }
@@ -178,14 +178,14 @@ namespace ShelterApp.UI.Pages.Base
             //}
             catch (Exception exp)
             {
-                //if (exp.InnerException != null)
-                //{
-                //    await ModalManager.MessagePopupAsync("Hata", exp.Message + "\n" + exp.InnerException.Message);
-                //}
-                //else
-                //{
-                //    await ModalManager.MessagePopupAsync("Hata", exp.Message);
-                //}
+                if (exp.InnerException != null)
+                {
+                    await JsRuntime.InvokeVoidAsync("confirmDelete", "Bilgi", "Bilgileri eksiksiz doldurunuz");
+                }
+                else
+                {
+                    await JsRuntime.InvokeVoidAsync("confirmDelete", "Hata", "Bilgileri eksiksiz doldurunuz");
+                }
 
                 return new TGetOutputDto();
             }
@@ -221,14 +221,14 @@ namespace ShelterApp.UI.Pages.Base
             //}
             catch (Exception exp)
             {
-                //if (exp.InnerException != null)
-                //{
-                //    await ModalManager.MessagePopupAsync("Hata", exp.Message + "\n" + exp.InnerException.Message);
-                //}
-                //else
-                //{
-                //    await ModalManager.MessagePopupAsync("Hata", exp.Message);
-                //}
+                if (exp.InnerException != null)
+                {
+                    await JsRuntime.InvokeVoidAsync("confirmDelete", "Bilgi", "Bilgileri eksiksiz doldurunuz");
+                }
+                else
+                {
+                    await JsRuntime.InvokeVoidAsync("confirmDelete", "Hata", "Bilgileri eksiksiz doldurunuz");
+                }
                 return new TGetOutputDto();
             }
         }
@@ -242,15 +242,15 @@ namespace ShelterApp.UI.Pages.Base
             }
             catch (Exception exp)
             {
-                //if (exp.InnerException != null)
-                //{
-                //    await ModalManager.MessagePopupAsync("hata", exp.Message + "\n" + exp.InnerException.Message);
-                //}
-                //else
-                //{
-                //    await ModalManager.MessagePopupAsync("hata", exp.Message);
-                //}
-               
+                if (exp.InnerException != null)
+                {
+                    await JsRuntime.InvokeVoidAsync("confirmDelete", "Bilgi", "Hata");
+                }
+                else
+                {
+                    await JsRuntime.InvokeVoidAsync("confirmDelete", "Hata", "Hata");
+                }
+
             }
         }
 

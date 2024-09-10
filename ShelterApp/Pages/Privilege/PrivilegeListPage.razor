@@ -14,6 +14,7 @@
 @inject NavigationManager NavigationManager
 
 
+
 @if (!base.IsLoaded)
 {
     <CircleLoading Caption="@base.LoadingCaption" Text="@base.LoadingText" />
@@ -42,7 +43,7 @@ else
                                 <GridSelectionSettings Type="Syncfusion.Blazor.Grids.SelectionType.Multiple"></GridSelectionSettings>
 
                                 <GridColumns>
-                                    <GridColumn HeaderText="Sıra No" TextAlign="TextAlign.Left" Width="120">
+                                    <GridColumn HeaderText="Sıra No" TextAlign="TextAlign.Left" Width="40">
                                         <Template Context="cntxt">
                                             @{
                                                 var contxt = (cntxt as ListPrivilegeDto);
@@ -52,35 +53,29 @@ else
                                         </Template>
                                     </GridColumn>
 
-                                    <GridColumn Field=@nameof(ListPrivilegeDto.PrivilegeName) HeaderText="Sektör Adı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
-                                    <GridColumn Field=@nameof(ListPrivilegeDto.TextInPicture) HeaderText="Resim Yazısı" TextAlign="TextAlign.Left" Width="120"></GridColumn>
+                                    <GridColumn Field=@nameof(ListPrivilegeDto.PrivilegeName) HeaderText="Sektör Adı" TextAlign="TextAlign.Left" Width="80"></GridColumn>
+                                    <GridColumn Field=@nameof(ListPrivilegeDto.TextInPicture) HeaderText="Resim Yazısı" TextAlign="TextAlign.Left" Width="280"></GridColumn>
                                      
-                                    <GridColumn Field=@nameof(ListPrivilegeDto.Photo) HeaderText="Resim" TextAlign="TextAlign.Left" Width="120">
+                                    <GridColumn Field=@nameof(ListPrivilegeDto.Photo)  HeaderText="Resim" TextAlign="TextAlign.Left" Width="70">
                                         <Template>
                                             @{
                                                 var imgBase = (context as ListPrivilegeDto).Photo;
-                                            if (imgBase.Length > 0)
-                                            {
-                                                // var base64 = Convert.ToBase64String(imgBase);
-                                                // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
-                                                // @*<img src="@imgSrc" />*@
-
-                                                //     <div style="text-align:center;">
-                                                //         <img src="@imgSrc" style="width:75px;height:75px;" />
-                                                //     </div>
-                                            }
-                                            else
-                                            {
-                                                    <div style="text-align:center;">
-                                                        <img src="" style="width:75px;height:75px;" />
-                                                    </div>
-                                                }
+                                                if (imgBase != null && imgBase.Length > 0)
+                                                 {
+                                                    <br />
+                                                    <img src="@imgBase" style="width:75px;height:75px;" />
+                                                 }
+                                                 else
+                                                 {
+                                                    <br />
+                                                    <img src="images/resimYok.jpg" style="width:75px;height:75px;" />
+                                                 }
                                             }
                                         </Template>
                                     </GridColumn>
                                        
                                    
-                                     <GridColumn Field="İşlemler" HeaderText="İşlemler" TextAlign="TextAlign.Left" Width="120">
+                                     <GridColumn Field="İşlemler" HeaderText="İşlemler" TextAlign="TextAlign.Left" Width="70">
                                         <Template>
                                             <button class="btn btn-success" @onclick="() => EditItem(context as ListPrivilegeDto)"><i class="fa fa-pen"></i></button>
                                             <button class="btn btn-danger" @onclick="() => DeleteItem(context as ListPrivilegeDto)"><i class="fa fa-trash"></i></button>
@@ -149,25 +144,33 @@ else
 
                                 if (imgBase != null && imgBase.Length > 0)
                                 {
-                                    // var base64 = Convert.ToBase64String(imgBase);
-                                    // var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
-                                    // <br />
-                                    // <img src="@imgSrc" style="width:150px;height:150px;" />
+                                    <br />
+                                    <img src="@imgBase" style="width:100px;height:100px;" />
                                 }
                                 else
                                 {
                                     <br />
-                                    <img src="images/resimYok.jpg" style="width:150px;height:150px;" />
+                                    <img src="images/resimYok.jpg" style="width:100px;height:100px;" />
+                                }
+                                                            <br />
+                            <div class="file-input-zone">
+                                <InputFile OnChange="UploadFiles" />
+                                </div>
+                                @if(photoVisible)
+                                {
+                                    <div id="loading" class="loading">Loading...</div>
                                 }
                             }
                         </Template>
                     </DxGridLayoutItem>
-                    <DxGridLayoutItem Row="3" Column="3">
+
+                      <DxGridLayoutItem Row="3" Column="3">
                         <Template>
-                            <br />
-                            <div class="file-input-zone">
-                                <InputFile OnChange="UploadFiles" />
-                            </div>
+                            <br>
+                            <label><strong>Dil</strong></label><br />
+                            <SfComboBox TValue="string" TItem="string" Placeholder="Dil Seçiniz" DataSource="@dilList" @bind-Value=@DataSource.Language>
+                             <ComboBoxEvents TValue="string" TItem="string" ValueChange="OnDilValueChange"></ComboBoxEvents>
+                            </SfComboBox>
                         </Template>
                     </DxGridLayoutItem>
                 </Items>
@@ -181,3 +184,33 @@ else
         </FooterContentTemplate>
     </DxPopup>
 }
+
+                    <style>
+
+
+.hidden {
+  display: none;
+}
+
+.loading {
+  font-size: 24px;
+  color: #000;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.loading::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 4px solid #000;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+
+                    </style>

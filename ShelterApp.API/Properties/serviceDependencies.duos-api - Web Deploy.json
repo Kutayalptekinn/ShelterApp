@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/DuosAppApi/apis/DuosAppAPI",
+      "type": "apis.azure"
+    },
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/duos-api/providers/Microsoft.ServiceLinker/linkers/DUOSAPPConnectionStrings_BE056C99EC",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/duosappdbserver/databases/duosAPPDB",
+      "type": "mssql.azure",
+      "connectionId": "DUOSAPPConnectionStrings"
+    }
+  }
+}

@@ -16,7 +16,7 @@ namespace ShelterApp.API.Controllers
         [HttpPost("Send")]
         public void SendEmail(Form form)
         {
-            _emailSender.SendEmail("cagatayalp038@gmail.com", form);
+            _emailSender.SendEmail("kutayalptekin3@gmail.com", form);
         }
     }
 }

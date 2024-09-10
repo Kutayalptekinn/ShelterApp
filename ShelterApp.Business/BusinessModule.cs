@@ -25,7 +25,7 @@ namespace ShelterApp.Business
 
             services.AddCors(options => options.AddPolicy("AllowLocalhost", builder =>
             {
-                builder.WithOrigins("http://localhost:3000", "https://duos-flame.vercel.app")
+                builder.WithOrigins("http://localhost:3000", "https://www.duos.net")
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));

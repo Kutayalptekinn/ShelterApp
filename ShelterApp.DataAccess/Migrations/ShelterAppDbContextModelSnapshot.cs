@@ -17,7 +17,7 @@ namespace ShelterApp.DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "7.0.18")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -35,9 +35,8 @@ namespace ShelterApp.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Foto")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("Foto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Icerik")
                         .IsRequired()
@@ -47,11 +46,14 @@ namespace ShelterApp.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Language")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Tarih")
                         .HasColumnType("DateTime");
 
                     b.Property<string>("Yazar")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -68,9 +70,12 @@ namespace ShelterApp.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<byte[]>("Photo")
+                    b.Property<string>("Language")
                         .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PrivilegeName")
                         .IsRequired()
@@ -95,12 +100,38 @@ namespace ShelterApp.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Baslik")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Detay")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FrontPhoto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Icerik")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Foto")
+                    b.Property<string>("Isim")
                         .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Language")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Photo1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Photo2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Photo3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UstBaslik")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -120,25 +151,25 @@ namespace ShelterApp.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("FrontPhoto")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("FrontPhoto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HeaderText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Photo1")
+                    b.Property<string>("Language")
                         .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Photo2")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("Photo1")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Photo3")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("Photo2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Photo3")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SectorName")
                         .IsRequired()

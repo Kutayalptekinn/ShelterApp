@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "mssql3": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/duos-admin/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsAppConnectionStrings_64695A922C",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/duosappdbserver/databases/duosAPPDB",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:AppConnectionStrings"
+    }
+  }
+}

@@ -13,5 +13,6 @@ namespace ShelterApp.Entities.Entities.Privilege
         public string TextInPicture { get; set; }
         public string Photo { get; set; }
 
+        public string Language { get; set; }
     }
 }
